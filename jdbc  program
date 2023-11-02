@@ -1,0 +1,50 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DisplayTableData {
+    public static void main(String[] args) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
+        String username = "your_username";
+        String password = "your_password";
+
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish a database connection
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            // Specify the table you want to retrieve data from
+            String tableName = "your_table_name";
+
+            // Create an SQL query to retrieve data
+            String sqlQuery = "SELECT * FROM " + tableName;
+
+            // Create a statement
+            Statement statement = connection.createStatement();
+
+            // Execute the query and retrieve the result set
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+
+            // Iterate through the result set and display data
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id"); // Replace "id" with the actual column name
+                String name = resultSet.getString("name"); // Replace "name" with the actual column name
+                // Retrieve other columns as needed
+
+                System.out.println("ID: " + id + ", Name: " + name);
+                // Display other columns as needed
+            }
+
+            // Close the result set, statement, and connection
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
