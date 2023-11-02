@@ -1,0 +1,56 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class StudentResumeApplication {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Student Resume Builder");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLayout(new GridLayout(6, 2));
+
+        JLabel nameLabel = new JLabel("Name:");
+        JTextField nameField = new JTextField();
+
+        JLabel majorLabel = new JLabel("Major:");
+        JTextField majorField = new JTextField();
+
+        JLabel gpaLabel = new JLabel("GPA:");
+        JTextField gpaField = new JTextField();
+
+        JLabel skillsLabel = new JLabel("Skills:");
+        JTextArea skillsArea = new JTextArea();
+
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String major = majorField.getText();
+                String gpa = gpaField.getText();
+                String skills = skillsArea.getText();
+
+                // You can process the data here (e.g., save it to a file or display it).
+                // For a complete resume builder, you would create a more advanced design.
+
+                JOptionPane.showMessageDialog(frame, "Student information submitted:\n" +
+                        "Name: " + name + "\nMajor: " + major + "\nGPA: " + gpa + "\nSkills: " + skills);
+            }
+        });
+
+        frame.add(nameLabel);
+        frame.add(nameField);
+        frame.add(majorLabel);
+        frame.add(majorField);
+        frame.add(gpaLabel);
+        frame.add(gpaField);
+        frame.add(skillsLabel);
+        frame.add(skillsArea);
+        frame.add(new JLabel());  // Empty cell for spacing
+        frame.add(submitButton);
+
+        frame.setVisible(true);
+    }
+}
