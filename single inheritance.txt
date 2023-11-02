@@ -1,0 +1,26 @@
+//single inheritance
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+class one {
+    public void cars()
+    {
+        System.out.println("BMW");
+        
+    }
+    
+}
+class two extends one {
+    public void bike() { System.out.println("R15"); }
+    
+    
+}
+public class Vehicle {
+    public static void main(String[] args)
+    {
+        two g = new two();
+        g.cars();
+        g.bike();
+        g.cars();
+    }
+}

@@ -1,0 +1,33 @@
+//Multilevel inheritance
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+class one {
+    public void fycs()
+    {
+        System.out.println("Linux");
+        
+    }
+    
+}
+class two extends one {
+    public void sycs() { System.out.println("Java"); }
+    
+}
+class three extends two {
+    public void fycs()
+    {
+        System.out.println("Linux");
+        
+    }
+}
+public class Bsc {
+    public static void main(String[] args)
+    {
+        three g = new three();
+        g.fycs();
+        g.sycs();
+        g.fycs();
+        
+    }
+}
